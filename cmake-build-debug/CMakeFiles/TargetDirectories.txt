@@ -1,0 +1,3 @@
+C:/Users/scott/Documents/4. semester/nettverksprog/oving4/udpVectorProduct/cmake-build-debug/CMakeFiles/udpVectorProduct.dir
+C:/Users/scott/Documents/4. semester/nettverksprog/oving4/udpVectorProduct/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/scott/Documents/4. semester/nettverksprog/oving4/udpVectorProduct/cmake-build-debug/CMakeFiles/rebuild_cache.dir
