@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles/udpVectorProduct.dir/src/UDPServer.cpp.o",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

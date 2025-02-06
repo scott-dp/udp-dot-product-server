@@ -23,3 +23,11 @@ asio::awaitable<void> UDPServer::start() {
         co_spawn(socket.get_executor(), handle_request(std::move(endpoint), std::move(message)), asio::detached);
     }
 }
+
+double UDPServer::vectorProduct(vector<double> vector1, vector<double> vector2) {
+    double result = 0;
+    for (int i = 0; i < vector1.size(); ++i) {
+        result+=vector1[i]*vector2[i];
+    }
+    return result;
+}

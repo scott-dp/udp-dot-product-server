@@ -1,0 +1,7 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/udpVectorProduct.dir/main.cpp.obj: dyndep
+
+build CMakeFiles/udpVectorProduct.dir/src/UDPServer.cpp.obj: dyndep
+
+build CMakeFiles/udpVectorProduct.dir/src/UDPClient.cpp.obj: dyndep
+
