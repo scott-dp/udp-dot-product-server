@@ -17,8 +17,8 @@ public:
     explicit UDPServer(asio::io_context &io_context) : socket(io_context, asio::ip::udp::endpoint(asio::ip::udp::v6(), 3000)) {}
     asio::awaitable<void> handle_request(asio::ip::udp::endpoint endpoint, string message);
     asio::awaitable<void> start();
-    double vectorProduct(vector<double> vector1, vector<double> vector2);
-
+    int vectorDotProduct(vector<int> vector1, vector<int> vector2);
+    int parseVectorsAndCalculateProduct(string message);
 };
 
 

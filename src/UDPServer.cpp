@@ -3,8 +3,14 @@
 //
 
 #include "../include/UDPServer.h"
+using namespace std;
 
 asio::awaitable<void> UDPServer::handle_request(asio::ip::udp::endpoint endpoint, string message) {
+    try {
+        message = to_string(parseVectorsAndCalculateProduct(message));
+    } catch(const exception& e) {
+        message = "Vectors in incorrect format";
+    }
     co_await socket.async_send_to(asio::buffer(message, message.length()), endpoint, asio::use_awaitable);
     cout << "Server: sent: " << message
          << ", to " << endpoint.address() << ":" << endpoint.port() << endl;
@@ -24,10 +30,39 @@ asio::awaitable<void> UDPServer::start() {
     }
 }
 
-double UDPServer::vectorProduct(vector<double> vector1, vector<double> vector2) {
-    double result = 0;
+int UDPServer::vectorDotProduct(vector<int> vector1, vector<int> vector2) {
+    int result = 0;
     for (int i = 0; i < vector1.size(); ++i) {
         result+=vector1[i]*vector2[i];
     }
     return result;
+}
+
+int UDPServer::parseVectorsAndCalculateProduct(string message) {
+    vector<int> vector1;
+    vector<int> vector2;
+    int currentVector = 1;
+    for (char i : message) {
+        if (i == '\n') {
+            currentVector++;
+            continue;
+        } else if (i == ',') {
+            continue;
+        } else {
+            string number;
+            //TODO fix this
+            cout << message[i] <<endl;
+            while (message[i] != ',' || message[i] != '\n') {
+                //message[i] should be a number here
+                number+=message[i];
+                i++;
+            }
+            if (currentVector == 1) {
+                vector1.push_back(stoi(number));
+            } else {
+                vector2.push_back(stoi(number));
+            }
+        }
+    }
+    return vectorDotProduct(vector1, vector2);
 }

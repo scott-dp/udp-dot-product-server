@@ -17,8 +17,9 @@ asio::awaitable<void> UDPClient::start() {
             .begin()
             ->endpoint();
 
-    std::string message("hello");
+    std::string message("1,2,33\n3,4,5");
     auto bytes_transferred = co_await socket.async_send_to(asio::buffer(message, message.length()), endpoint, asio::use_awaitable);
+
     cout << "Client: sent: " << message
          << ", to " << endpoint.address() << ":" << endpoint.port() << endl;
 
