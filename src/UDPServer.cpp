@@ -42,24 +42,25 @@ int UDPServer::parseVectorsAndCalculateProduct(string message) {
     vector<int> vector1;
     vector<int> vector2;
     int currentVector = 1;
-    for (char i : message) {
-        if (i == '\n') {
+    for (int messageIndex = 0; messageIndex < message.size(); ++messageIndex) {
+        if (message[messageIndex] == '\n') {
             currentVector++;
             continue;
-        } else if (i == ',') {
+        } else if (message[messageIndex] == ',') {
             continue;
         } else {
             string number;
-            //TODO fix this
-            cout << message[i] <<endl;
-            while (message[i] != ',' || message[i] != '\n') {
-                //message[i] should be a number here
-                number+=message[i];
-                i++;
+            while (message[messageIndex] != ',' && message[messageIndex] != '\n' && messageIndex < message.size()) {
+                //message[messageCharacter] should be a number here
+                number+=message[messageIndex];
+                messageIndex++;
             }
+            messageIndex--;
             if (currentVector == 1) {
+                cout << "vector 1" << number <<endl;
                 vector1.push_back(stoi(number));
             } else {
+                cout << "vector 1" << number <<endl;
                 vector2.push_back(stoi(number));
             }
         }
